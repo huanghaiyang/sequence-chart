@@ -1,0 +1,40 @@
+{
+  "name": "sequence-chart",
+  "version": "1.0.0",
+  "description": "d3 plugin for sequence chart",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm test",
+    "build": "grunt build",
+    "prepublish": "npm prune && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huanghaiyang/sequence-chart.git"
+  },
+  "keywords": [
+    "d3",
+    "sequence"
+  ],
+  "author": "huanghaiyang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huanghaiyang/sequence-chart/issues"
+  },
+  "homepage": "https://github.com/huanghaiyang/sequence-chart#readme",
+  "dependencies": {
+    "d3": "^4.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-register": "^6.11.6",
+    "grunt-babel": "^6.0.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "load-grunt-tasks": "^3.5.0",
+    "grunt": "^1.0.1"
+  }
+}
