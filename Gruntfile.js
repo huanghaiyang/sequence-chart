@@ -19,14 +19,14 @@ module.exports = function (grunt) {
         watch: {
             dist: {
                 files: ['./lib/*.js'],
-                dist: ['babel:dist']
+                tasks: ['babel:dist']
             }
         }
     })
 
     require('load-grunt-tasks')(grunt)
     grunt.registerTask('default', ['build'])
-    grunt.registerTask('build', 'Build grunt-webdriver_stage', function () {
+    grunt.registerTask('build', 'Build sequence chart', function () {
         grunt.task.run([
             'clean',
             'babel'
