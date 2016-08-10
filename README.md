@@ -74,4 +74,4 @@ type: d3.select('svg')
 type: Number
 
 ## Demo Snapshot
-![Snapshot](/img/Snapshot.png "截图")
+![Snapshot](/img/snapshot.png "截图")
