@@ -50,7 +50,7 @@
 				});
 			}
 			newBlocks.forEach(function (block) {
-				svg.append('rect').attr('x', 0).attr('y', 0).attr('fill', _this.blockStartColor).transition(blockTransition).attr('width', block.width).attr('height', block.height).attr('class', 'seq-block').attr("transform", 'translate(' + block.left + ', ' + block.top + ')').style("fill", _this.blockColor);
+				svg.append('rect').attr('x', block.left).attr('y', block.top).attr('height', block.height).attr('fill', _this.blockStartColor).transition(blockTransition).attr('width', block.width).attr('class', 'seq-block').style("fill", _this.blockColor);
 			});
 
 			setTimeout(function () {
