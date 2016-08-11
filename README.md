@@ -40,37 +40,49 @@ c.draw()
 
 ## options
 + data
+
 type: Array
+
 description: array item must be an Object , with start and end property, you should provide a sequence data like percent but not have '%'
 
 + rowPadding
+
 type: Number
 
 + blockHeight
+
 type: Number
 
 + blockColor
+
 type: HEX
 
 + blockStartColor
+
 type: HEX
 
 + blockHoverColor
+
 type: HEX
 
 + line
+
 type: Boolean
 
 + lineColor
+
 type: HEX
 
 + lineColor
+
 type: lineStartColor
 
 + container
+
 type: d3.select('svg')
 
 + easeTime
+
 type: Number
 
 ## Demo Snapshot
