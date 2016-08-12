@@ -79,7 +79,7 @@ type: lineStartColor
 
 + container
 
-type: d3.select('svg')
+type: d3 Selector
 
 + easeTime
 
@@ -93,7 +93,7 @@ value: true or false
 + ease
 
 type: d3 ease type
-defaultValue: d3.easeBackInOut
+defaultValue: d3.easeExpOut
 
 ## Demo Snapshot
 ![Snapshot](/img/snapshot.gif "截图")
