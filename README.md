@@ -85,5 +85,15 @@ type: d3.select('svg')
 
 type: Number
 
++ zoom
+
+type: Boolean
+value: true or false
+
++ ease
+
+type: d3 ease type
+defaultValue: d3.easeBackInOut
+
 ## Demo Snapshot
 ![Snapshot](/img/snapshot.gif "截图")

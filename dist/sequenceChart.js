@@ -13,19 +13,29 @@
 		this.line = options.line || true; // either draw line or not
 		this.lineColor = options.lineColor || '#F29F3F';
 		this.lineStartColor = options.lineStartColor || '#FFF';
-		this.container = options.container;
+		this.svg = options.container;
 		this.easeTime = options.easeTime || 500;
+		this.zoom = options.zoom || true;
+		this.ease = options.ease || d3.easeBackInOut;
 
-		// TODO width and height must be a number
+		this.zoom = function () {
+			this.svg.selectAll('rect,path').attr("transform", "translate(" + d3.event.transform.x + "," + d3.event.transform.y + ") scale(" + d3.event.transform.k + ")");
+		};
+
+		this.zoomListener = d3.zoom().scaleExtent([0.1, 3]).on("zoom", this.zoom.bind(this));
+
+		if (this.zoom) {
+			this.svg.call(this.zoomListener);
+		}
 
 		this.draw = function () {
 			var _this = this;
 
-			var svg = this.container;
-			var width = svg.attr("width");
-			var height = svg.attr("height");
+			var width = this.svg.attr("width");
+			var height = this.svg.attr("height");
 
-			var blockTransition = d3.transition().duration(this.easeTime).ease(d3.easeLinear);
+			var blockTransition = d3.transition().duration(this.easeTime).ease(this.ease);
+
 			var lineTransition = blockTransition;
 
 			if (this.blocks.length > 0) {
@@ -50,7 +60,7 @@
 				});
 			}
 			newBlocks.forEach(function (block) {
-				svg.append('rect').attr('x', block.left).attr('y', block.top).attr('height', block.height).attr('fill', _this.blockStartColor).transition(blockTransition).attr('width', block.width).attr('class', 'seq-block').style("fill", _this.blockColor);
+				_this.svg.append('rect').attr('x', block.left).attr('y', block.top).attr('height', block.height).attr('fill', _this.blockStartColor).transition(blockTransition).attr('width', block.width).attr('class', 'seq-block').style("fill", _this.blockColor);
 			});
 
 			setTimeout(function () {
@@ -62,16 +72,16 @@
 							var nextBlock = newBlocks[index + 1];
 							linePath.lineTo(nextBlock.left, nextBlock.top);
 							linePath.closePath();
-							svg.append('path').attr('d', linePath).attr('stroke', _this.lineStartColor).attr('stroke-width', 0.5).attr('class', 'seq-line');
+							_this.svg.append('path').attr('d', linePath).attr('stroke', _this.lineStartColor).attr('stroke-width', 0.5).attr('class', 'seq-line');
 						}
 					});
-					svg.selectAll(".seq-line").transition(lineTransition).style("stroke", _this.lineColor);
+					_this.svg.selectAll(".seq-line").transition(lineTransition).style("stroke", _this.lineColor);
 				}
 
-				svg.selectAll(".seq-block").on('mouseover', function () {
+				_this.svg.selectAll(".seq-block").on('mouseover', function () {
 					d3.select(d3.event.target).style('fill', _this.blockHoverColor);
 				}, false);
-				svg.selectAll(".seq-block").on('mouseout', function () {
+				_this.svg.selectAll(".seq-block").on('mouseout', function () {
 					d3.select(d3.event.target).style('fill', _this.blockColor);
 				}, false);
 			}, this.easeTime);
